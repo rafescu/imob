@@ -38,9 +38,9 @@ const arrendamento = (i) => i.finalidade === "Arrendamento";
 const precoTexto = (i) => euro(i.preco) + (arrendamento(i) ? "<small> / mês</small>" : "");
 const curto = (i) => arrendamento(i) ? `${fmtNum(i.preco)} €/mês` : i.preco >= 1e6 ? (i.preco / 1e6).toFixed(1) + "M €" : Math.round(i.preco / 1000) + "k €";
 const nomeCidade = (id) => CIDADES.find((c) => c.id === id)?.nome || "";
-// O site da agência bloqueia as fotografias em tamanho grande pedidas a partir de outros domínios
-// (só as miniaturas de 480 px passam). Mudar para true quando o mapa estiver no domínio da agência
-// ou o João autorizar o acesso.
+// O servidor da agência demora 1–10 s (e às vezes falha) a entregar as fotografias grandes (1920 px);
+// as miniaturas de 480 px chegam em ~0,2 s e chegam para a galeria (~420 px de largura).
+// Mudar para true se o servidor ficar mais rápido ou as fotografias passarem a ser servidas por uma CDN.
 const FOTOS_GRANDES = false;
 const foto = (id, mini) => `${SITE_AGENCIA}/imagem-imovel.php?id=${id}${mini || !FOTOS_GRANDES ? "&size=thumb" : ""}`;
 const linkAnuncio = (i) => `${SITE_AGENCIA}/imovel.php?id=${i.id}`;
