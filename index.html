@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Imóveis</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="demo-aviso">Demonstração · protótipo</div>
+  <aside class="sidebar">
+    <header class="topo">
+      <div>
+        <h1>Encontre o seu lugar.</h1>
+        <p class="subtitulo">Explore os imóveis no mapa 3D</p>
+      </div>
+      <select id="cidade" aria-label="Cidade"></select>
+    </header>
+
+    <section class="filtros">
+      <div class="chips" id="tipos"></div>
+      <div class="linha">
+        <label>Finalidade
+          <select id="finalidade">
+            <option>Todas</option><option>Venda</option><option>Arrendamento</option>
+          </select>
+        </label>
+        <label>Tipologia
+          <select id="tipologia">
+            <option value="">Todas</option>
+            <option>T1</option><option>T2</option><option>T3</option><option>T4</option><option>T5</option>
+          </select>
+        </label>
+      </div>
+      <div class="linha">
+        <label>Ordenar
+          <select id="ordem">
+            <option value="preco-desc">Preço ↓</option>
+            <option value="preco-asc">Preço ↑</option>
+            <option value="area-desc">Área ↓</option>
+          </select>
+        </label>
+      </div>
+      <label class="range"><span id="precoTitulo">Preço máximo</span> <strong id="precoMaxLabel"></strong>
+        <input type="range" id="precoMax">
+      </label>
+    </section>
+
+    <div class="contagem" id="contagem"></div>
+    <ul class="lista" id="lista"></ul>
+  </aside>
+
+  <main id="mapa"></main>
+
+  <div class="controlos">
+    <button id="toggleEdif" title="Mostrar/esconder edifícios 3D">Esconder edifícios</button>
+    <button id="toggleSat" title="Alternar mapa/satélite">Satélite</button>
+    <button id="toggle3d" title="Alternar 2D/3D">2D</button>
+  </div>
+
+  <article class="ficha" id="ficha" aria-hidden="true"></article>
+
+  <button class="mostrar-lista" id="mostrarLista">Lista</button>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="data/imoveis.js"></script>
+  <script src="data/localizacoes.js"></script>
+  <script src="data/vizinhanca.js"></script>
+  <script src="vizinhanca.js"></script>
+  <script src="sol.js"></script>
+  <script src="apresentacao.js"></script>
+  <script src="rua.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
